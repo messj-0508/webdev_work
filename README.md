@@ -1,1 +1,5 @@
-# webdev_work
+# webdev_work简介
+
+---
+
+该文档主要记录一些编程练习与笔记。
