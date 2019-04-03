@@ -10,7 +10,7 @@ LAMP是指一组通常一起使用来运行动态网站或者服务器的自由�
 
 ---
 
-## 一、主要流程
+## 一 主要流程
 
 1. 在终端输入命令 cat /etc/redhat-release 查看系统版本。
 
@@ -207,6 +207,103 @@ LAMP是指一组通常一起使用来运行动态网站或者服务器的自由�
     ExecStart=/usr/local/mysql/bin/mysqld
     TimeoutSec=600
     Restart=always
-    PrivateTmp=fal
+    PrivateTmp=false
+```
+9. 设置PATH环境变量:
+``` bash
+    echo "export PATH=$PATH:/usr/local/mysql/bin" > /etc/profile.d/mysql.sh
+    source /etc/profile.d/mysql.sh
+```
+10. 启动MySQL服务并设置开机启动。
+``` bash
+    systemctl start mysql
+    systemctl enable mysql
+```
+11. 修改MySQL的root用户密码。运行以下命令，并按界面提示设置密码。
+``` bash
+    mysqladmin -u root password
+```
+12. 测试登录MySQL数据库。
+``` bash
+	mysql -uroot -p
+```
+## 四 安装PHP
+1. 安装依赖包。
+``` bash
+	yum install libmcrypt libmcrypt-devel mhash mhash-devel libxml2 libxml2-devel bzip2 bzip2-devel
+```
+2. 下载稳定版源码包解压编译。
+``` bash
+    cd
+    wget http://cn2.php.net/get/php-7.0.32.tar.bz2/from/this/mirror
+    cp mirror php-7.0.32.tar.bz2
+    tar xvf php-7.0.32.tar.bz2 -C /usr/local/src
+    cd /usr/local/src/php-7.0.32
+    ./configure --prefix=/usr/local/php \
+    --with-config-file-scan-dir=/etc/php.d \
+    --with-apxs2=/usr/local/apache2/bin/apxs \
+    --with-config-file-path=/etc \
+    --with-pdo-mysql=mysqlnd \
+    --with-mysqli=/usr/local/mysql/bin/mysql_config \
+    --enable-mbstring \
+    --with-freetype-dir \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib \
+    --with-libxml-dir=/usr \
+    --with-openssl \
+    --enable-xml \
+    --enable-sockets \
+    --enable-fpm \
+    --with-bz2
+    make && make install
+```
+3. 复制PHP的配置文件。
+``` bash 
+    cp php.ini-production /etc/php.ini
 ```
 
+4. 输入命令`vi /usr/local/apache2/conf/httpd.conf`打开Apache配置文件
+
+``` bash
+	1.找到ServerName参数，添加ServerName localhost:80。
+	2.找到Directory参数，注释掉Require all denied，添加Require all granted。
+	3.找到DirectoryIndex index.html，将它替换为DirectoryIndex index.php index.html。
+	4.找到如下内容：
+	  AddType application/x-compress .z
+      AddType application/x-gzip .gz .tgz
+      在后面添加如下内容：
+      AddType application/x-httpd-php .php
+      AddType application/x-httpd-php-source .phps
+```
+5. 添加Apache对解析PHP的支持。
+
+``` bash
+	vi /usr/local/apache2/htdocs/index.php
+```
+``` vi
+	<?php
+    phpinfo();
+    ?>
+```
+6. 重启Apache服务
+``` bash
+	systemctl restart httpd
+```
+
+## 五 安装phpMyAdmin。
+
+1. 准备phpMyAdmin数据存放目录。
+``` bash
+    cd
+    mkdir -p /usr/local/apache2/htdocs/phpmyadmin
+```
+2. 下载phpMyAdmin压缩包并解压。
+``` bash
+    wget https://files.phpmyadmin.net/phpMyAdmin/4.0.10.20/phpMyAdmin-4.0.10.20-all-languages.zip
+    unzip phpMyAdmin-4.0.10.20-all-languages.zip
+```
+3. 复制phpMyAdmin文件到准备好的数据存放目录。
+``` bash
+	mv phpMyAdmin-4.0.10.20-all-languages/*  /usr/local/apache2/htdocs/phpmyadmin
+```
