@@ -1,14 +1,18 @@
 # GitHub设置无密码登录
 
+---
+
 GitHub项目的授权方式有两种方式：Https和SSH。
 
 Https可以随意克隆github上的项目，而不管是谁的；而SSH则是你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。
 
 https url在push的时候是需要验证用户名和密码的；而 SSH在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。
 
----
+
 
 ## 一 安装ssh证书
+
+---
 
 1. **首先需要检查你电脑是否已经有 SSH key ，在 git Bash 客户端，输入如下代码：**
 
@@ -18,6 +22,7 @@ https url在push的时候是需要验证用户名和密码的；而 SSH在push�
 ```
 
 		这两个命令就是检查是否已经存在 id_rsa.pub 或 id_dsa.pub 文件，如果文件已经存在，那么则跳过步骤2。
+
 
 
 2. **创建一个 SSH key **
@@ -30,9 +35,9 @@ https url在push的时候是需要验证用户名和密码的；而 SSH在push�
         -f 指定密钥文件存储文件名。
     
         接着又会提示你输入两次密码（该密码是你push文件的时候要输入的密码，而不是github管理者的密码），可以不输入密码，直接按回车。
+        
 
 
-​		
 3. **添加你的 SSH key 到 github上面去**
 
    a. 首先你需要拷贝 id_rsa.pub 文件的内容，你可以用编辑器打开文件复制，也可以用git命令复制该文件的内容，如：
@@ -43,6 +48,8 @@ https url在push的时候是需要验证用户名和密码的；而 SSH在push�
 
   	b. 登录你的github账号，从又上角的settings进入，然后点击菜单栏的 SSH key 进入页面添加 SSH key。
   	c. 点击 Add SSH key 按钮添加一个 SSH key 。把你复制的 SSH key 代码粘贴到 key 所对应的输入框中，记得 SSH key 代码的前后不要留有空格或者回车。title随意。
+
+
 
 
 4. **测试一下该SSH key**
@@ -73,6 +80,8 @@ https url在push的时候是需要验证用户名和密码的；而 SSH在push�
 ```
 
 ​	如果用户名是正确的,你已经成功设置SSH密钥。
+
+
 
 ---
 
