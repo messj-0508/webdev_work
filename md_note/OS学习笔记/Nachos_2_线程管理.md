@@ -84,7 +84,7 @@
 - READY 线程处理就绪态 
 - BLOCKED 线程处于阻塞态 
 
-用户进程在线程切换的时候，除保存宿主机的状态外，必须还要保存虚拟机的寄存器状态。UserRegisters[]数组变量和 SaveUserState(), RestoreUserState()方法就是为了用户进程 的切换设计的。
+用户进程在线程切换的时候，除保存宿主机的状态外，必须还要保存虚拟机的寄存器状态。UserRegisters[]数组变量和 SaveUserState(), RestoreUserState()方法就是为了用户进程的切换设计的。
 
 ​        在 UNIX 操作系统中，进程终止时释放大部分空间，有一部分工作留给父进程处理。在 Nachos 中，当一个线程运行结束时，同样需要将线程所占用的空间释放。但是 Nachos 线程不能释放自己的空间，因为此时它还运行在自己的栈段上。所以当线程结束时调用 Finish 方法，Finish 方法的作用是设置全局变量 threadToBeDestroyed，说明该线程已经运行结束，需释放栈空间。Finish 紧接切换到其它线程，该运行线程释放 threadToBeDestoryed 线程栈空间。Scheduler 类中的 Run 方法才有机会删除 threadToBeDestroyed 线程栈空间。当系统中没有就绪线程和中断等待处理时， 系统会退出而不会切换到其它线程 ，只有借助于系统释放空间的机制来释放 threadToBeDestroyed线程的空间。
 

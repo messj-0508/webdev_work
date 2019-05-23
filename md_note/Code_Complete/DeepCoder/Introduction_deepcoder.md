@@ -4,7 +4,7 @@ DeepCoder是微软和剑桥大学联合开发的一种计算机算法，可以�
 
 ### 一、Introduction
 
-DeepCoder所用的技术叫程序合成（ program synthesis），通过截取已有软件的代码行来组成新的程序。通过学习一系列代码片（code fragment）的输入和输出数据，DeepCoder能自动摘取出对目标任务有用的代码片。
+DeepCoder所用的技术叫程序合成（ program synthesis），**通过截取已有软件的代码行来组成新的程序**。通过学习一系列代码片（code fragment）的输入和输出数据，DeepCoder能自动摘取出对目标任务有用的代码片。
 
 ### 二、Re-Implement
 
@@ -14,9 +14,9 @@ DeepCoder所用的技术叫程序合成（ program synthesis），通过截取�
 
 智能编译相关论文：
 
-ICML上的DeepCoder:Learning to Write Programs
+ICML上的DeepCoder: Learning to Write Programs
 
-arXiv上最近的Al Programmer:Autonomously Creating Software Programs UsingGenetic Algorithms
+arXiv上最近的Al Programmer: Autonomously Creating Software Programs UsingGenetic Algorithms
 
 ### 三、网上评论
 
@@ -51,3 +51,16 @@ arXiv上最近的Al Programmer:Autonomously Creating Software Programs UsingGene
 3. 从现有软件中提取出代码片段并不难，很多人类程序员也会这样做，只需要明确每条代码的意义，并将其用于完全不同用途的另一程序。
    然而不同于人类程序员的是，AI能够在很大范围内全面搜索现有程序，并用独特方式整合在一起，这些是人类程序员不太容易想到的方式。此外可以肯定的是，整个编码过程也会大大加快，DeepCoder在几分之一秒内就能编写一个程序。
    可以想见的是，程序员的工作效率会有一个质的飞跃，从前靠人力的编程手段，“进化”到自动化的编码行为。未来的工作模式，将会是一场新的工业革命，未来的行业中，智力产出品最终也可以像工业品一样流水生产，这样一来人类就可以免除重复性的脑力劳动，投入到更有价值的事情中去，哪怕只是有空闲下来喝杯咖啡、享受一下生活呢？
+
+### 四、可行性评价
+
+这种自动编程的实现方式，难点不仅在于算法，更重要的是搜索潜在代码的机制。数据集应该有现成的相关数据集，但领域应该不小，一般都是以编程语言的类别作为划分，如Java、Python。个人评价：
+
+目的：与我们的功能其实一个方向的两个领域，他们是代码生成，我们是代码预测或说是代码推荐。
+
+算法：存在一定难度，目前我只试运行Keras版提供的demo。
+
+数据集：现有的数据集领域更大，具体情况还未调研。制作数据集，难度偏高。
+
+搜索机制：这方面我们可能一无所知。
+
