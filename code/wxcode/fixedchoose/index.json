@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "popup": "/component/popup/popup"
+  },
+  "navigationBarTitleText": "固定车辆车证办理"
+}

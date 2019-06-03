@@ -1,0 +1,26 @@
+<view>
+  <view>
+    <button id='btn_teacher' class='btn1' bindtap='showPopup'> <!-- open-type='contact' -->
+      <image class='btnImg' src='../../res/img/ftea.png'></image>
+      <view>教职工车辆</view>
+    </button>
+
+    <button id='btn_student' class='btn2' bindtap='showPopup'> <!-- open-type='openSetting' -->
+      <image class='btnImg' src='../../res/img/fstu.png'></image>
+      <view>学生车辆</view>
+    </button>
+
+    <button id='btn_other' class='btn3' bindtap='showPopup'> <!-- open-type='openSetting' -->
+      <image class='btnImg' src='../../res/img/fother.png'></image>
+      <view>服务商车辆</view>
+    </button>
+  </view>
+  <popup id='popup' 
+      title='{{title}}'
+      content='{{content}}'
+      btn_no='取消' 
+      btn_ok='同意'
+      bind:error="_error"  
+      bind:success="_success">
+  </popup>
+</view>

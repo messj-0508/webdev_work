@@ -1,0 +1,143 @@
+<!--pages/tempperson/tempperson.wxml-->
+<view class="container container-gray">
+  <form class='form_layout'  bindsubmit="formSubmit">
+    <view class="group">
+      <!-- 预约人信息 -->
+      <!-- 一块区域的题目 -->
+      <view class="group-header">预约人信息</view>
+        <!-- 一块区域 -->
+        <view class="group-body">
+          <view class="input-list">
+            <!-- 预约人姓名 -->
+            <view class="input-item">
+              <text class="input-item-label">姓名</text>
+              <view class="input-item-content">
+                <input type="text" placeholder="请输入预约人姓名" id="usr_name" name = "usr_name">{{usr_name}}</input>
+              </view>
+            </view>
+
+            <!-- 选择身份 -->
+            <view class="input-item">
+              <text class="input-item-label">身份</text>
+              <picker class="input-item-content" bindchange="bindPickerChange" data-pickername="usrtype" value="{{typeindex}}" range="{{typearr}}" mode="selector" id = "typeindex" name = "typeindex">{{typearr[typeindex]}}
+              </picker>
+            </view>
+            
+            <!-- 输入预约人学号/工号 -->
+            <view class="input-item">
+              <text class="input-item-label">学号/工号</text>
+              <view class="input-item-content">
+                <input type="text" placeholder="请输入预约人学号/工号" id='usr_number' name = "usr_number">{{usr_number}}</input>
+              </view>
+            </view>
+            
+            <!-- 预约人联系电话 -->
+            <view class="input-item">
+              <text class="input-item-label">联系电话</text>
+              <view class="input-item-content">
+                <input type="number" placeholder="请输入预约人联系电话" id='usr_phone' name = "usr_phone">{{usr_phone}}</input>
+              </view>
+            </view>
+
+            <!-- 选择部门 -->
+            <view class="input-item">
+              <text class="input-item-label">部门/专业</text>
+              <picker class="input-item-content" bindchange="bindPickerChange" data-pickername="industry" value="{{industryindex}}" range="{{industryarr}}" mode="selector" id = "industryindex" name = "industryindex">{{industryarr[industryindex]}}
+              </picker>
+            </view>
+
+        </view>
+      </view>
+
+      <!-- 一块区域的题目 -->
+      <!-- 来访人信息 -->
+      <view class="group-header">来访人信息</view>
+        <!-- 一块区域 -->
+        <view class="group-body">
+          <view class="input-list">
+            <!-- 姓名 -->
+            <view class="input-item">
+              <text class="input-item-label">姓名</text>
+              <view class="input-item-content">
+                <input type="text" placeholder="请输入来访人姓名" id="people_name" name = "people_name">{{people_name}}</input>
+              </view>
+            </view>
+            
+            <!-- 来访人联系电话 -->
+            <view class="input-item">
+              <text class="input-item-label">联系电话</text>
+              <view class="input-item-content">
+                <input type="number" placeholder="请输入来访人联系电话" id='people_phone' name = "people_phone">{{people_phone}}</input>
+              </view>
+            </view>
+            <!-- 随行人数 -->
+            <view class="input-item">
+              <text class="input-item-label">随行人数</text>
+              <view class="input-item-content">
+                <input type="number" placeholder="请输入来访人随行人数" id='people_number' name = "people_number">{{people_number}}</input>
+              </view>
+            </view>
+
+        </view>
+      </view>
+
+      <!-- 其他信息 -->
+      <view class="group-header">其他信息</view>
+        <!-- 一块区域 -->
+        <view class="group-body">
+          <view class="input-list">
+          
+            <!-- 入校原因 -->
+            <view class="input-item input-item-full">
+              <text class="input-item-label">入校原因</text>
+              <textarea placeholder="可输入200字" maxlength="200" id='reason' name="reason"></textarea>
+				    </view>
+            <!-- 入校日期 -->
+            <view class="input-item">
+              <text class="input-item-label">入校日期</text>
+              <view class="input-item-content">
+                <view class="section">
+                  <picker mode="date" value="{{date}}" start="2019-01-01" bindchange="bindDateChange">
+                    <view class="picker">
+                      {{date}}
+                    </view>
+                  </picker>
+                </view>
+              </view>
+            </view>
+            
+            
+
+            <!-- 入校时间 -->
+            <view class="input-item">
+              <text class="input-item-label">入校时间</text>
+              <view class="input-item-content">
+                <view class="section">                
+                  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                    <view class="picker">
+                      {{time}}
+                    </view>
+                  </picker>
+                </view>
+              </view>
+            </view>
+            <!-- 备注 -->
+            <view class="input-item input-item-full">
+              <text class="input-item-label">备注（选填）</text>
+              <textarea placeholder="可输入50字" maxlength="50" id='note' name="note"></textarea>
+				    </view>
+
+        </view>
+      </view>
+
+
+
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="btn-submit">
+      <button form-type="submit" class="btn-block btn-orange"  >提交</button>
+    </view>
+  </form>
+</view>
+

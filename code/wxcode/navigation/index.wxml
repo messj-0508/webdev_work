@@ -1,0 +1,33 @@
+<button class='btn1' bindtap='bindToFixedChoose'> <!-- open-type='contact' -->
+    <image class='btnImg' src='../../res/img/fixed.png'></image>
+    <view>固定车辆车证办理</view>
+ </button>
+
+  <button id = 'btn_tempcar' class='btn2' bindtap = 'showPopupCar'> <!-- open-type='openSetting' -->
+    <image class='btnImg' src='../../res/img/tempCar.png'></image>
+    <view>临时车辆入校预约</view>
+ </button>
+
+   <button id = 'btn_temphum' class='btn3' bindtap = 'showPopupHum'> <!-- open-type='openSetting' -->
+    <image class='btnImg' src='../../res/img/tempHum.png'></image>
+    <view>临时人员入校预约</view>
+ </button>
+
+  <popup id='popup1' 
+      title='{{title1}}'
+      content="{{content1}}" 
+      btn_no='取消' 
+      btn_ok='同意'
+      bind:error="_error1"  
+      bind:success="_success1">
+  </popup>
+
+  <popup id='popup2' 
+      title='{{title2}}' 
+      content="{{content2}}" 
+      btn_no='取消' 
+      btn_ok='同意'
+      bind:error="_error2"  
+      bind:success="_success2">
+  </popup>
+

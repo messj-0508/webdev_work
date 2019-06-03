@@ -1,0 +1,12 @@
+<login 
+    id='component1' 
+    schoolCode="1016145360" 
+    openId="openid" 
+    bindverifyStudent="verifyStudent"
+    bindloginCancel="loginCalcel"
+    appId="wx7731e0029493cbeb" 
+    appKey="1A45896670D16ADA" 
+    bindcardChooseGetInfo="callback"
+    bindcardChooseCancel="callback"
+    bindcardChooseErrofInfo="callback"
+/>

@@ -1,0 +1,45 @@
+<!--pages/search/index.wxml-->
+<view class="container container-gray">
+  <form class='form_layout'  bindsubmit="formSubmit">
+	<view class="group">
+
+    <!-- 基本信息 -->
+    <!-- 一块区域的题目 -->
+		<view class="group-header">查询条件</view>
+      <!-- 一块区域 -->
+		  <view class="group-body">
+			  <view class="input-list">
+
+          <!-- 职工号 -->
+          <view class="input-item">
+            <text class="input-item-label">职工号</text>
+            <view class="input-item-content">
+              <input type="text" placeholder="请输入职工号"  id="usr_number" name = "usr_number"></input>
+            </view>
+          </view>
+          <!-- 输入姓名 -->
+          <view class="input-item">
+            <text class="input-item-label">姓名</text>
+            <view class="input-item-content">
+              <input type="text" placeholder="请输入姓名" id='usr_name' name = "usr_name"></input>
+            </view>
+          </view>
+          
+          <!-- 联系电话 -->
+          <view class="input-item">
+            <text class="input-item-label">车牌号</text>
+            <view class="input-item-content">
+              <input type="text" placeholder="请输入车牌号" id='car_number' name = "car_number"></input>
+            </view>
+          </view>
+              
+			</view>
+		</view>
+    
+	</view>
+  <!-- 提交按钮 -->
+	<view class="btn-submit">
+      <button form-type="submit" class="btn-block btn-orange"  >查询</button>
+	</view>
+  </form>
+</view>

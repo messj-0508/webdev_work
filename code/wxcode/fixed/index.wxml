@@ -1,0 +1,113 @@
+<!-- 车辆信息和备注 -->
+<!-- 车辆信息 -->
+
+<view class="group-header">车辆信息</view>
+<view class="group-body">
+	<view class="input-list">
+    <view class="group-body">
+      <view class="input-list">
+
+        <!-- 车牌号码 -->
+        <view class="input-item">
+					<text class="input-item-label">车牌号码</text>
+					<view class="input-item-content">
+						<input type="text" placeholder="请输入车牌号码" id='car_number' name="car_number"></input>
+					</view>
+				</view>
+
+        <!-- 车辆所有者姓名 -->
+        <view class="input-item">
+					<text class="input-item-label" >车辆所有者</text>
+					<view class="input-item-content">
+						<input type="text" placeholder="请输入车辆所有者姓名" id='car_owner' name="car_owner"></input>
+					</view>
+				</view> 
+
+        <!-- 照片上传 -->
+        <view class="input-item input-item-full"> 
+          <text class="input-item-label">上传行驶证照片</text>
+          <view class="loadImage loadImgdetail">
+              <view class="educt_hasupload_pic" wx:if="{{evalList[0].tempFilePaths[0]}}"  wx:key="index">
+                <!-- 被加载的图片 -->
+                <image src="{{evalList[0].tempFilePaths[0]}}" class="upload"></image>
+                <!-- 删除按钮 -->
+                <image src="../../../res/img/del.png" bindtap='clearImg' data-index="{{0}}" class="deltel"></image> 
+              </view>
+              <!-- 加号 -->
+              <view class="educt_upload_add" wx:else bindtap="joinPicture" data-index="{{0}}">
+                <image src="../../../res/img/add.png" class="add"></image>
+              </view>
+          </view>
+        </view>
+
+        <!-- 照片上传 -->
+        <view class="input-item input-item-full"> 
+            <text class="input-item-label">上传驾驶证照片</text>            
+            <!-- 加载多张图片 -->
+            <view class="loadImage loadImgdetail">
+              <view class="educt_hasupload_pic" wx:if="{{evalList[0].tempFilePaths[1]}}"  wx:key="index">
+                <!-- 被加载的图片 -->
+                <image src="{{evalList[0].tempFilePaths[1]}}" class="upload"></image>
+                <!-- 删除按钮 -->
+                <image src="../../../res/img/del.png" bindtap='clearImg' data-index="{{1}}" class="deltel"></image> 
+              </view>
+              <!-- 加号 -->
+              <view class="educt_upload_add" wx:else bindtap="joinPicture" data-index="{{1}}">
+                <image src="../../../res/img/add.png" class="add"></image>
+              </view>
+            </view>
+        </view>
+          
+			
+				<view class="input-item">
+        <text>行驶证与驾驶人信息是否一致？</text>
+        </view>
+        <view class="input-item">
+          <radio-group bindchange="setFinance">					
+							<label class="{{hasfinancing?'checked':''}}">
+								<radio value="一致" checked="{{hasfinancing}}" />一致
+							</label>
+              <label class="{{!hasfinancing?'checked':''}}">
+								<radio value="不一致" checked="{{!hasfinancing}}"/>不一致
+							</label>
+					</radio-group>			
+				</view>
+
+        <!-- 行驶证与驾驶人信息不一致 -->
+        <view wx:if="{{!hasfinancing}}">
+          <!-- 照片上传 -->
+          <view class="input-item input-item-full"> 
+            <text class="input-item-label">上传附加证明材料</text>
+            <!-- 加载多张图片 -->
+            <view class="loadImage loadImgdetail">
+              <view class="educt_hasupload_pic" wx:if="{{evalList[0].tempFilePaths[2]}}"  wx:key="index">
+                <!-- 被加载的图片 -->
+                <image src="{{evalList[0].tempFilePaths[2]}}" class="upload"></image>
+                <!-- 删除按钮 -->
+                <image src="../../../res/img/del.png" bindtap='clearImg' data-index="{{2}}" class="deltel"></image> 
+              </view>
+              <!-- 加号 -->
+              <view class="educt_upload_add"  wx:else bindtap="joinPicture" data-index="{{2}}">
+                <image src="../../../res/img/add.png" class="add"></image>
+              </view>
+            </view> 
+          </view>        
+				</view>
+
+			</view>
+		</view>
+
+    <!-- 其他 -->
+		<view class="group-header">其他</view>
+      <view class="group-body">
+			  <view class="input-list">
+          <!-- 备注 -->
+				  <view class="input-item input-item-full">
+            <text class="input-item-label">备注（选填）</text>
+            <textarea placeholder="可输入50字" maxlength="50" id='note' name="note"></textarea>
+				  </view>
+        </view>
+		</view>
+  
+	</view>
+</view>
