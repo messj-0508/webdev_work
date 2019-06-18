@@ -1,0 +1,222 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESM后台管理系统</title>
+
+    <link rel="stylesheet" href="/resources/css/normalize.css">
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="/resources/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" href="/resources/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/resources/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+  
+	<link href="/resources/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+   	<style>
+    	#weatherWidget .currentDesc {
+        color: #ffffff!important;
+    	}
+        .traffic-chart {
+            min-height: 335px;
+        }
+        #flotPie1  {
+            height: 150px;
+        }
+        #flotPie1 td {
+            padding:3px;
+        }
+        #flotPie1 table {
+            top: 20px!important;
+            right: -10px!important;
+        }
+        .chart-container {
+            display: table;
+            min-width: 270px ;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #flotLine5  {
+             height: 105px;
+        }
+
+        #flotBarChart {
+            height: 150px;
+        }
+        #cellPaiChart{
+            height: 160px;
+        }
+        .hint{
+          color:red;
+          display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <div id="aside">
+    </div>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <div id="header">
+        </div>
+        <!-- /#header -->
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <div id="header">
+        </div>
+        <!-- /#header -->
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">临时人员入校</strong>
+                            </div>
+                            <div class="card-body">
+                              
+                              	<!--startprint1-->
+                                <br>
+                                <br>
+                                <h1 style=" text-align:center;">临时人员信息表</h1>
+                                <br>
+                                <br>
+
+                          <div id="savehistory">
+                          <div class="userselect"></div>
+                            <!-- -->
+                              <form align="center" action="{:url('god_hand/dopeopleappoint')}"   method="post">   
+
+                                  <table width="80%" border="1" cellpadding="6" cellspacing="0" bordercolor="#CB1E36" align="center">
+                                    <tr><td align="center" colspan="4" style="background-color:#CB1E36"><font color="#FFFFFF">来访人信息</font> </td>  </tr>		  
+                                    <tr>
+                                      <td width="50px" nowrap>来访人姓名</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:60%" name="people_name" id = "people_name" placeholder="请输入来访人姓名 例如 张三" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                        <span class="hint" id="people_name_check" name="people_name_check"> </span>
+                                      </td>
+                                      <td width="50px" nowrap>随行人数</td>
+									  <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:80%" name="people_number" id = "people_number" placeholder="请输入随访人数 例如 10" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                      	<span class="hint" id="people_number_check" name="people_number_check"> </span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>入校日期</td>
+                                      <!--这个地方是翁嘉进打错了appoint_data应该是appoint_date，但是对应到数据库也有，就不改了 -->
+                                      <td width="120px" nowrap><input class="form-control" type="date" style="width:60%" name="appoint_data" id = "appoint_data" onchange="get_date()"/></td>
+                                      <td width="50px" nowrap>联系电话</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:80%" name="people_phone" id = "people_phone" placeholder="请输入11位手机号" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                      	<span class="hint" id="people_phone_check" name="people_phone_check"> </span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>入校原因(可选)</td>
+                                      <td nowrap colspan="3" ><textarea class="form-control" rows="3" id="reason" name="reason" style="width: 80%" placeholder="请输入来访原因（可不填）"></textarea></td>
+                                    </tr><!---->
+                                    <tr><td align="center" colspan="4" style="background-color:#CB1E36"><font color="#FFFFFF">其他信息</font></td> </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>备注（可选）</td>
+                                      <td nowrap colspan="3" ><textarea class="form-control" rows="3" id="note" name="note" style="width: 80%" placeholder="请输入备注（可不填）"></textarea></td>
+                                    </tr><!---->
+                                  </table>
+                                  <input type="submit"
+                                         id = "mybtn"
+                                         value="请将信息填写完整之后添加"
+                                         class="btn btn-outline-danger btn-lg btn-block"
+                                         style="margin-top:15px;width:80%"
+                                         disabled="disabled"
+                                         />
+                              </form>  
+                          </div>	
+                              <!--endprint1-->
+                            </div><!-- .card-body -->
+                        </div><!-- .card -->
+                    </div><!-- .col-md-12 -->
+                </div><!-- .row -->
+            </div> <!-- .animated -->
+        </div> <!-- .content -->
+	</div>
+    <!-- /#right-panel -->
+  
+    <script src="/resources/javascript/vendor/jquery-2.1.4.min.js"></script>
+	<script src="/resources/javascript/popper.min.js"></script>
+    <script src="/resources/javascript/plugins.js"></script>
+    <script>
+    	$("#aside").load("/resources/pages/aside.html");
+    	$("#header").load("/resources/pages/header.html");
+        function loadJS(url){
+          var Script = document.createElement('script');
+          Script.setAttribute('src', url);
+          Script.setAttribute('type', 'text/javascript');
+          document.body.appendChild(Script);
+          return Script;
+        }
+      	loadJS("/resources/javascript/main.js")
+	</script>
+  
+    <script type="text/javascript" >
+      // 检查每一项输入是否为空
+      var people_name_check = document.getElementById("people_name"); 
+      var people_number_check = document.getElementById("people_number"); 
+      var people_phone_check = document.getElementById("people_phone"); 
+      var btn = document.getElementById("mybtn"); 
+
+      function check_info(id){
+          var check_id = document.getElementById(id);
+          var show_warning = document.getElementById(id+"_check");
+          if(check_id.value==""){
+              show_warning.innerHTML = "输入不能为空";
+              show_warning.style.display='inline';
+          }
+          else{
+              show_warning.innerHTML = "";
+              show_warning.style.display='none';
+          }
+      }
+
+      function validate_button(){
+        // 每次用户离开输入框都检查一遍，用以激活按钮
+        if(people_name_check.value!="" && people_number_check.value!="" && people_phone_check.value!=""){
+          btn.disabled="";
+          btn.value="确认添加";
+        }
+      }
+      
+      //获取当前时间并显示到前端
+      // 给input date设置默认值
+      var now = new Date();
+      //格式化日，如果小于9，前面补0
+      var day = ("0" + now.getDate()).slice(-2);
+      //格式化月，如果小于9，前面补0
+      var month = ("0" + (now.getMonth() + 1)).slice(-2);
+      //拼装完整日期格式
+      var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+      //完成赋值
+      $('#appoint_data').val(today);
+      
+      function get_date(){
+      	var date_of_today = document.getElementById("appoint_data").value;
+      	console.log(date_of_today);
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESM后台管理系统</title>
+
+    <link rel="stylesheet" href="/resources/css/normalize.css">
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="/resources/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" href="/resources/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/resources/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/resources/css/lib/datatable/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+  
+	<link href="/resources/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+   	<style>
+        .print-div {
+          display: flex;
+          margin-left: 100px;
+        }
+    	#weatherWidget .currentDesc {
+        color: #ffffff!important;
+    	}
+        .traffic-chart {
+            min-height: 335px;
+        }
+        #flotPie1  {
+            height: 150px;
+        }
+        #flotPie1 td {
+            padding:3px;
+        }
+        #flotPie1 table {
+            top: 20px!important;
+            right: -10px!important;
+        }
+        .chart-container {
+            display: table;
+            min-width: 270px ;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #flotLine5  {
+             height: 105px;
+        }
+
+        #flotBarChart {
+            height: 150px;
+        }
+        #cellPaiChart{
+            height: 160px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <div id="aside">
+    </div>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <div id="header">
+        </div>
+        <!-- /#header -->
+
+
+
+      
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">车证具体信息</strong>
+                            </div>
+                            <div class="card-body">
+                              
+                              	<!--startprint1-->
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h1  style=" text-align:center;">车证信息</h1>
+                                <br/>
+                                <br/>
+                                <br/>
+                                
+                              	<div class="print-div">
+                                    <div class="row" style="float:left;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">姓名：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.usr_name}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="float:right;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">身份：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.type}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                <div class="print-div">
+                                    <div class="row" style="float:left;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">学号/职工号：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.usr_number}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="float:right;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">联系方式：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.usr_phone}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="print-div">
+                                    <div class="row" style="float:left;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label"> 部门/专业：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.department}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="float:right;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label"> 车证状态：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            {if condition="$data.status == 1"}
+                                            	<p class="form-control-static">有效</p>
+                                            {elseif condition="$data.status == 0"/}
+                                            	<p class="form-control-static">无效</p>
+                                            {elseif condition="$data.status == 2"/}
+                                            	<p class="form-control-static">挂失</p>
+                                            {else/}
+                                            	<p class="form-control-static">出错！</p>
+                                            {/if}
+                                        </div>
+                                  	</div>
+                                </div>
+
+                                              
+                                <br/>
+                                <hr/>
+                                <br/>
+
+                                <div class="print-div">
+                                    <div class="row" style="float:left;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">车牌号码：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.car_number}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="float:right;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">车辆所有者：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.car_owner}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="print-div">
+                                    <div class="row" style="float:left;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">审核通过时间：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.pass_date}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="float:right;width:50%;">
+                              		
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">最终失效时间：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <p class="form-control-static">{$data.valid_date}</p>
+                                        </div>
+                              		</div>
+                                </div>
+                      
+                                <div class="print-div">
+                                    <div class="row" style="float:left;width:50%;">
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">行驶证照片：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <img src="{$data.car_card}" style="max-width:275px;">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="float:right;width:50%;">
+                              		
+                                        <div class="col col-md-4">
+                                            <label class=" form-control-label">驾驶证照片：</label>
+                                        </div>
+                                        <div class="col-12 col-md-8">
+                                            <img src="{$data.usr_card}" style="max-width:275px;">
+                                        </div>
+                              		</div>
+                                </div>
+                      
+
+                      			
+                              <!--endprint1-->
+                                <br/>
+                                <hr/>
+                                <br/>
+                  			
+                                <div class="print-div">
+                                  <div class="row" style="float:left;width:100%;">
+                                      
+                                      <button  type="button" onclick="javascrtpt:window.location.href='/manager/credential_search/index'" class="btn btn-outline-primary btn-lg btn-block">
+                                        <i class="fa fa-reply fa-lg"></i>&nbsp;
+                                        <span id="payment-button-amount">返回</span>
+                                      </button>
+                                      
+                                  </div>
+                                  
+                                </div>
+                            </div><!-- .card-body -->
+                        </div><!-- .card -->
+                    </div><!-- .col-md-12 -->
+  
+  
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div><!-- .content -->
+      
+      
+	</div>
+    <!-- /#right-panel -->
+
+    <script src="/resources/javascript/vendor/jquery-2.1.4.min.js"></script>
+	<script src="/resources/javascript/popper.min.js"></script>
+    <script src="/resources/javascript/plugins.js"></script>
+  
+    <script>
+    	$("#aside").load("/resources/pages/aside.html");
+    	$("#header").load("/resources/pages/header.html");
+        function loadJS(url){
+          var Script = document.createElement('script');
+          Script.setAttribute('src', url);
+          Script.setAttribute('type', 'text/javascript');
+          document.body.appendChild(Script);
+          return Script;
+        }
+      	loadJS("/resources/javascript/main.js")
+	</script>
+
+  
+</body>
+</html>

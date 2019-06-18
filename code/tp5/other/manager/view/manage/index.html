@@ -1,0 +1,280 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESM后台管理系统</title>
+
+    <link rel="stylesheet" href="/resources/css/normalize.css">
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="/resources/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" href="/resources/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/resources/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+  
+	<link href="/resources/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+   	<style>
+        html {
+           height: 100%;
+        }
+
+        body {
+           height: 100%;
+        }
+      	tr{text-align:center} 
+      	td{text-align:center} 
+    	#weatherWidget .currentDesc {
+        color: #ffffff!important;
+    	}
+        .traffic-chart {
+            min-height: 335px;
+        }
+        #flotPie1  {
+            height: 150px;
+        }
+        #flotPie1 td {
+            padding:3px;
+        }
+        #flotPie1 table {
+            top: 20px!important;
+            right: -10px!important;
+        }
+        .chart-container {
+            display: table;
+            min-width: 270px ;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #flotLine5  {
+             height: 105px;
+        }
+
+        #flotBarChart {
+            height: 150px;
+        }
+        #cellPaiChart{
+            height: 160px;
+        }
+      
+      	#div1{
+		width: 1080px;
+		height: 208px;
+		margin: 100px auto;
+		position: relative;
+		overflow: hidden;
+        }
+        #div1 ul{
+            position:absolute;
+            left: 0;
+            top: 0;
+        }
+        #div1 ul li {
+            float: left;
+            width: 200px;
+            height: 208px;
+            list-style: none;
+            margin-left: 10px;
+        }
+
+    </style>
+</head>
+
+<body >
+    <!-- Left Panel -->
+    <div id="aside">
+    </div>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel" >
+        <!-- Header-->
+        <div id="header">
+        </div>
+        <!-- /#header -->
+      <div class="content" >
+            <div class="animated fadeIn">
+              	<!--  Traffic  -->
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card">
+                          	<br/>
+                          	<div style="margin-left:30px;">
+                              
+                          		<h2>欢迎您回来，管理员。</h2>
+                          	</div>
+                          	<br/>
+                      	</div>
+                    </div><!-- /# column -->
+                </div>
+                <!--  /Traffic -->
+                
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-flat-color-1">
+                            <div class="card-body">
+                                <div class="card-left pt-1 float-left">
+                                    <h3 class="mb-0 fw-r">
+                                        <span class="count">{$data.r1}</span>
+                                    </h3>
+                                    <p class="text-light mt-1 m-0">条等待初审</p>
+                                </div><!-- /.card-left -->
+
+                                <div class="card-right float-right text-right">
+                                    <i class="icon fade-5 icon-lg pe-7s-airplay"></i>
+                                </div><!-- /.card-right -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.col-->
+                  
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-flat-color-6">
+                            <div class="card-body">
+                                <div class="card-left pt-1 float-left">
+                                    <h3 class="mb-0 fw-r">
+                                        <span class="count">{$data.r2}</span>
+                                    </h3>
+                                    <p class="text-light mt-1 m-0">条等待终审</p>
+                                </div><!-- /.card-left -->
+
+                                <div class="card-right float-right text-right">
+                                    <i class="icon fade-5 icon-lg pe-7s-albums"></i>
+                                </div><!-- /.card-right -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.col-->
+
+                  
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-flat-color-3">
+                            <div class="card-body">
+                                <div class="card-left pt-1 float-left">
+                                    <h3 class="mb-0 fw-r">
+                                        <span class="count">{$data.r3}</span>
+                                    </h3>
+                                    <p class="text-light mt-1 m-0">条申请已处理</p>
+                                </div><!-- /.card-left -->
+
+                                <div class="card-right float-right text-right">
+                                    <i class="icon fade-5 icon-lg pe-7s-browser"></i>
+                                </div><!-- /.card-right -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.col-->
+
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-flat-color-2">
+                            <div class="card-body">
+                                <div class="card-left pt-1 float-left">
+                                    <h3 class="mb-0 fw-r">
+                                        <span class="count">{$data.r4}</span>
+                                    </h3>
+                                    <p class="text-light mt-1 m-0">个有效车证</p>
+                                </div><!-- /.card-left -->
+
+                                <div class="card-right float-right text-right">
+                                    <i class="icon fade-5 icon-lg pe-7s-users"></i>
+                                </div><!-- /.card-right -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/.col-->
+                  
+                </div>
+                <!--  Traffic  -->
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">各类用户设置表</strong>
+                            </div>
+                            <div class="table-stats ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">#</th>
+                                            <th>用户类型</th>
+                                            <th>固定车证申请权限</th>
+                                            <th>临时车辆入校预约权限</th>
+                                            <th>临时人员入校预约权限</th>
+                                            <th>车证有效年份</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      	
+                                        {foreach name="set" item="vo"}
+                                            <tr>
+                                                <td class="serial">{$vo.id}</td>
+                                                <td><span class="name">{$vo.type}</span> </td>
+                                              	{if condition="$vo.f1_access == 1"}
+                                                	<td><span class="product">开放</span> </td>
+                                              	{else/}
+                                                	<td><span class="product">禁用</span> </td>
+                                              	{/if}
+                                              	{if condition="$vo.f2_access == 1"}
+                                                	<td><span class="product">开放</span> </td>
+                                              	{else/}
+                                                	<td><span class="product">禁用</span> </td>
+                                              	{/if}
+                                              	{if condition="$vo.f3_access == 1"}
+                                                	<td><span class="product">开放</span> </td>
+                                              	{else/}
+                                                	<td><span class="product">禁用</span> </td>
+                                              	{/if}
+                                                <td>
+                                                  <span class="product">{$vo.valid_year} 年</span>
+                                              	</td>
+                                            </tr>
+                                        {/foreach}
+                                        
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                      </div>
+                    </div><!-- /# column -->
+                </div>
+                <!--  /Traffic -->
+
+            </div><!-- .animated -->
+        </div><!-- .content -->
+    </div>
+    <!-- /#right-panel -->
+    <script src="/resources/javascript/vendor/jquery-2.1.4.min.js"></script>
+	<script src="/resources/javascript/popper.min.js"></script>
+    <script src="/resources/javascript/plugins.js"></script>
+    <script>
+
+        function loadJS(url){
+          var Script = document.createElement('script');
+          Script.setAttribute('src', url);
+          Script.setAttribute('type', 'text/javascript');
+          document.body.appendChild(Script);
+          return Script;
+        }
+
+    	$("#aside").load("/resources/pages/aside.html");
+    	$("#header").load("/resources/pages/header.html");
+      	loadJS("/resources/javascript/main.js")
+	</script>
+
+</body>
+</html>

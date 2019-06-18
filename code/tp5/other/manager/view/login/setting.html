@@ -1,0 +1,600 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESM后台管理系统</title>
+
+    <link rel="stylesheet" href="/resources/css/normalize.css">
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="/resources/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" href="/resources/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/resources/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+  
+	<link href="/resources/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+	
+  	<style>
+        html {
+           height: 100%;
+        }
+
+        body {
+           height: 100%;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }	
+      	.w1{width:200px;}
+      	.paddingl{padding-left:5%;}
+      	.paddingr{padding-right:3%;}
+        .swich{width:200px;}
+        .swich .box{width:60px;height:30px;background:#ccc;border-radius:20px;transition: all .5s ease;}
+        .swich input{display:none;}
+        .swich .box span{display:inline-block;height:30px;width:30px;border-radius:15px;background:#fff;transform:translateX(0px);transition: all .5s ease;}
+        .swich-on .box{background:forestgreen;transition: all .5s ease;}
+        .swich-on .box span{transform:translateX(30px);transition: all .5s ease;}
+    </style>
+  
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <div id="aside">
+    </div>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <div id="header">
+        </div>
+        <!-- /#header -->
+      	
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="card">
+                            <div class="card-header">
+                              <div >
+                                  <strong class="card-title" >待修改数据</strong>
+                              </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="row form-group">
+                                    <div class="row" style="float:left;width:24%;margin-right:3%;margin-left:9.5%; overflow:hidden; text-overflow:ellipsis;">
+                                        <button type="button" class="btn btn-outline-danger btn-lg btn-block" name="r" id="Page1">教职工权限设置</button>
+                                    </div>
+                                    <div class="row" style="float:left;width:24%;margin-right:3%;margin-left:3%;overflow:hidden; text-overflow:ellipsis;">
+                                        <button type="button" class="btn btn-outline-danger btn-lg btn-block" name="r" id="Page2">学生权限设置</button>
+                                    </div>
+                                    <div class="row" style="float:left;width:24%;margin-left:3%;margin-right:6.5%; overflow:hidden; text-overflow:ellipsis;">
+                                        <button type="button" class="btn btn-outline-danger btn-lg btn-block" name="r" id="Page3">服务商权限设置</button>
+                                    </div>
+                                </div>
+                              <div>
+								<hr style="height:1px;"/>
+                                <br/>
+                              </div>
+                                <div name="pages">
+                                    <form role="form" action="{:url('login/changeSet')}" method="post">
+                                        <div class="row form-group">
+                                            <input type="hidden" id="Page0" name="Page0" value="Page0"/>
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">固定车证申请功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff1_access" name="ff1_access" class="swich">
+                                                    <input type="text" id="f1_access" name="f1_access" value="{$data[0]['f1_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">临时车辆入校预约功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff2_access" name="ff2_access" class="swich">
+                                                    <input type="text" id="f2_access" name="f2_access" value="{$data[0]['f2_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">临时人员入校预约功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff3_access" name="ff3_access" class="swich">
+                                                    <input type="text" id="f3_access" name="f3_access" value="{$data[0]['f3_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">固定车证有效年份：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div>
+                                        			<input type="number" value="{$data[0]['valid_year']}" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" class="w1" id="year" name="year" />
+                                                  <span>年</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      	<br/>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">已有部门清单：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div>
+                                        			{foreach name="depart" item="vo"}
+                                                  		<p style="color:#000">{$vo['id']}.{$vo['department']}</p>
+                                        			{/foreach}
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">删除部门：</label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div>
+                                        			<input type="number" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" class="w1" id="deleteid" name="deleteid" placeholder="请输入待删除部门的编号"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div>
+                                                  	<p>比如，想删除“电子部门”专业，则填写清单中对应的部门编号“2”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">添加部门：</label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div>
+                                        			<input type="text" class="w1" id="addmajor" name="addmajor" placeholder="请输入待添加专业的名称"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div>
+                                                  	<p>比如，想添加“电子信息”专业，则填写“电子信息”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group paddingl paddingr">
+                                                <button type="submit" class="btn btn-outline-danger btn-lg btn-block" style="margin-top:15px">
+                                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                                    <span id="payment-button-amount">确认修改</span>
+                                              	</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- pages1 -->
+                                <div name="pages" style="display:none">
+                                    <form role="form" action="{:url('login/changeSet')}" method="post">
+                                        <div class="row form-group">
+                                            <input type="hidden" id="Page1" name="Page1" value="Page1"/>
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">固定车证申请功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff4_access" name="ff4_access" class="swich">
+                                                    <input type="text" id="f4_access" name="f4_access" value="{$data[1]['f1_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">临时车辆入校预约功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff5_access" name="ff5_access" class="swich">
+                                                    <input type="text" id="f5_access" name="f5_access" value="{$data[1]['f2_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">临时人员入校预约功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff6_access" name="ff6_access" class="swich">
+                                                    <input type="text" id="f6_access" name="f6_access" value="{$data[1]['f3_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">固定车证有效年份：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div>
+                                        			<input type="number" value="{$data[1]['valid_year']}" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" class="w1" id="year" name="year" />
+                                                  <span>年</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      	<br/>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">已有专业清单：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div>
+                                        			{foreach name="major" item="vo"}
+                                                  		<p style="color:#000">{$vo['id']}.{$vo['major']}</p>
+                                        			{/foreach}
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">删除专业：</label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div>
+                                        			<input type="number" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" class="w1" id="deleteid" name="deleteid" placeholder="请输入待删除专业的编号"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div>
+                                                  	<p>比如，想删除“电子信息”专业，则填写清单中对应的专业编号“2”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">添加专业：</label>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div>
+                                        			<input type="text" class="w1" id="addmajor" name="addmajor" placeholder="请输入待添加专业的名称"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div>
+                                                  	<p>比如，想添加“电子信息”专业，则填写“电子信息”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group paddingl paddingr">
+                                                <button type="submit" class="btn btn-outline-danger btn-lg btn-block" style="margin-top:15px">
+                                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                                    <span id="payment-button-amount">确认修改</span>
+                                              	</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- pages2 -->
+                                <div name="pages" style="display:none">
+                                    <form role="form" action="{:url('login/changeSet')}" method="post">
+                                        <div class="row form-group">
+                                            <input type="hidden" id="Page2" name="Page2" value="Page2"/>
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">固定车证申请功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff7_access" name="ff7_access" class="swich">
+                                                    <input type="text" id="f7_access" name="f7_access" value="{$data[2]['f1_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">临时车辆入校预约功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff8_access" name="ff8_access" class="swich">
+                                                    <input type="text" id="f8_access" name="f8_access" value="{$data[2]['f2_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">临时人员入校预约功能：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div id="ff9_access" name="ff9_access" class="swich">
+                                                    <input type="text" id="f9_access" name="f9_access" value="{$data[2]['f3_access']}" />
+                                                    <div class="box">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3 paddingl">
+                                                <label for="password-input" class=" form-control-label">固定车证有效年份：</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <div>
+                                        			<input type="number" value="{$data[2]['valid_year']}" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))" style="ime-mode:Disabled" class="w1" id="year" name="year" />
+                                                  <span>年</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      	<br/>
+                                        <div class="row form-group paddingl paddingr">
+                                                <button type="submit" class="btn btn-outline-danger btn-lg btn-block" style="margin-top:15px">
+                                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                                    <span id="payment-button-amount">确认修改</span>
+                                              	</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- pages3 -->
+                            </div>
+                            <!-- card-body -->
+                        </div>
+                        <!-- card -->
+                    	</div>
+                    </div>
+                </div><!-- .animated -->
+            </div><!-- .content -->
+      
+    </div>
+    <!-- /#right-panel -->
+
+  	<script>
+          window.onload = function ()
+          {
+              var rs = document.getElementsByName('r');
+              var divs = document.getElementsByName('pages');
+              var index = 0;
+              var anonymous = function (i)
+              {
+                  rs[i].onclick = function ()
+                  {
+                      divs[index].style.display = "none";
+                      divs[i].style.display = "block";
+                      index = i;
+                  };
+              };
+
+              for ( var i = 0; i < rs.length; i++)
+              {
+                  anonymous (i);
+              }
+              rs[index].checked = true;
+              divs[index].style.display = "block";
+          };
+
+    </script>
+  	
+    <script src="/resources/javascript/vendor/jquery-2.1.4.min.js"></script>
+	<script src="/resources/javascript/popper.min.js"></script>
+    <script src="/resources/javascript/plugins.js"></script>
+    <script>
+    	$("#aside").load("/resources/pages/aside.html");
+    	$("#header").load("/resources/pages/header.html");
+        function loadJS(url){
+          var Script = document.createElement('script');
+          Script.setAttribute('src', url);
+          Script.setAttribute('type', 'text/javascript');
+          document.body.appendChild(Script);
+          return Script;
+        }
+      	loadJS("/resources/javascript/main.js")
+	</script>
+	
+  	<script>
+      	$(document).ready(function() {
+          	var value1 = $('#f1_access').val();
+          	if(value1 == "1"){
+          		$('#ff1_access').addClass('swich-on'); 
+            }
+          	var value2 = $('#f2_access').val();
+          	if(value2 == "1"){
+          		$('#ff2_access').addClass('swich-on'); 
+            }
+          	var value3 = $('#f3_access').val();
+          	if(value3 == "1"){
+          		$('#ff3_access').addClass('swich-on'); 
+            }
+          	var value4 = $('#f4_access').val();
+          	if(value4 == "1"){
+          		$('#ff4_access').addClass('swich-on'); 
+            }
+          	var value5 = $('#f5_access').val();
+          	if(value5 == "1"){
+          		$('#ff5_access').addClass('swich-on'); 
+            }
+          	var value6 = $('#f6_access').val();
+          	if(value6 == "1"){
+          		$('#ff6_access').addClass('swich-on'); 
+            }
+          	var value7 = $('#f7_access').val();
+          	if(value7 == "1"){
+          		$('#ff7_access').addClass('swich-on'); 
+            }
+          	var value8 = $('#f8_access').val();
+          	if(value8 == "1"){
+          		$('#ff8_access').addClass('swich-on'); 
+            }
+          	var value9 = $('#f9_access').val();
+          	if(value9 == "1"){
+          		$('#ff9_access').addClass('swich-on'); 
+            }
+        });
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff1_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff2_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff3_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff4_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff5_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff6_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff7_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff8_access");
+        (function(select){
+            var box = document.querySelector(select)
+            var checkbox = box.querySelector("input");
+            box.onclick = function(){
+                this.classList.toggle("swich-on");
+                if(checkbox.value == "1"){
+                    console.log("没有选中");
+                  	checkbox.value = "0";
+                }else{
+                    console.log("已经选中");
+                  	checkbox.value = "1";
+                }
+            }
+        })("#ff9_access");
+    </script>
+  
+
+</body>
+</html>

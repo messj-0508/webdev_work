@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.messj.xyz/manager/god_hand/add.html -->
+<html class="no-js" lang=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ESM后台管理系统</title>
+    <link rel="stylesheet" href="/resources/css/normalize.css">
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="/resources/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" href="/resources/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/resources/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+  
+	<link href="/resources/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+   	<style>
+    	#weatherWidget .currentDesc {
+        color: #ffffff!important;
+    	}
+        .traffic-chart {
+            min-height: 335px;
+        }
+        #flotPie1  {
+            height: 150px;
+        }
+        #flotPie1 td {
+            padding:3px;
+        }
+        #flotPie1 table {
+            top: 20px!important;
+            right: -10px!important;
+        }
+        .chart-container {
+            display: table;
+            min-width: 270px ;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #flotLine5  {
+             height: 105px;
+        }
+
+        #flotBarChart {
+            height: 150px;
+        }
+        #cellPaiChart{
+            height: 160px;
+        }
+      	
+      .hint{
+      	color:red;
+        display:none;
+      }
+		
+    </style>
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <div id="aside">
+    </div>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <div id="header">
+        </div>
+        <!-- /#header -->
+
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">固定车证添加</strong>
+                            </div>
+                            <div class="card-body">
+                              
+                              	<!--startprint1-->
+                                <br>
+                                <br>
+                                <h1 style=" text-align:center;">固定车证信息表</h1>
+                                <br>
+                                <br>
+
+                          <div id="savehistory">
+                          <div class="userselect"></div>
+							<!--action="{:url('god_hand/doAdd')}"-->
+                            <!--本次表单采用的是先上传表单文字再上传图片的方法，让图片找到应该更新数据行插入，中间有0.5秒的间隔，可能不安全，通过onsubmit="send_form()"实现-->
+                              <form align="center" action="{:url('god_hand/doAdd')}" enctype="multipart/form-data" id="tf"  method="post" onsubmit="send_form()">   
+
+                                  <table width="80%" border="1" cellpadding="6" cellspacing="0" bordercolor="#CB1E36" align="center">
+                                    <tr><td align="center" colspan="4" style="background-color:#CB1E36"><font color="#FFFFFF">基本信息</font> </td>  </tr>		  
+                                    <tr>
+                                      <td width="50px" nowrap>姓名</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:60%" name="user_name" id = "user_name" placeholder="请输入姓名 例如 张三" onblur="check_info(this.id)" oninput="validate_button()" />
+                                        <span class="hint" id="user_name_check" name="user_name_check"> </span>
+                                      </td>
+                                      <td width="50px" nowrap>身份</td>
+                                      <td width="120px" nowrap>
+                                        &nbsp&nbsp&nbsp&nbsp
+                                          <input type="radio" name="sex1" id="sex1" value="教师" checked="checked" />  教师  
+                                        &nbsp&nbsp&nbsp&nbsp
+                                          <input type="radio" name="sex1" id="sex1" value="学生" />  学生  
+                                        &nbsp&nbsp&nbsp&nbsp
+                                          <input type="radio" name="sex1" id="sex1" value="其他人员" />  其他人员  
+                                        &nbsp&nbsp&nbsp&nbsp
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>学号/职工号</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:60%" name="user_num" id = "user_num" placeholder="请输入学号/职工号" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                        <span class="hint" id="user_num_check" name="user_num_check"> </span>
+                                      </td>
+                                      <td width="50px" nowrap>部门/专业</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:60%" name="user_department" id = "user_department" placeholder="例 软件工程" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                      	<span class="hint" id="user_department_check" name="user_department_check"> </span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>联系方式</td>
+                                      <td nowrap colspan="3">
+                                        <input class="form-control" type="text" style="width:60%" name="usr_phone" id = "usr_phone" placeholder="请输入11位手机号" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                        <span class="hint" id="usr_phone_check" name="usr_phone_check"> </span>
+                                      </td>
+                                    </tr>
+                                    <tr><td align="center" colspan="4" style="background-color:#CB1E36"><font color="#FFFFFF">车辆信息</font></td> </tr>
+
+                                    <tr>
+                                      <td width="50px" nowrap>车牌号码</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:60%" name="car_number" id = "car_number" placeholder="例 京A 000001" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                      	<span class="hint" id="car_number_check" name="car_number_check"> </span>
+                                      </td>
+                                      <td width="50px" nowrap>车辆所有者</td>
+                                      <td width="120px" nowrap>
+                                        <input class="form-control" type="text" style="width:60%" name="owner" id = "owner" placeholder="请输入姓名 例如 张三" onblur="check_info(this.id)" oninput="validate_button()"/>
+                                      	<span class="hint" id="owner_check" name="owner_check"> </span>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>行驶证照片（可选）</td>
+                                      <td  nowrap colspan="3">
+                                          <input id="fileInput" name="fileInput" type="file" onchange="processFiles(this.files)">
+                                          <br>
+                                          <img src="" id="myImage" name="myImage" onload='if (this.width>150 || this.height>150) if (this.width/this.height>150/150) this.width=150; else this.height=150;'/>  
+                                          <br>
+                                          <!--绘制画布-->
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>驾驶证照片（可选）</td>
+                                      <td  nowrap colspan="3">
+                                          <input id="fileInput2" name="fileInput2" type="file" onchange="processFiles2(this.files)">
+                                          <br>
+                                          <img src="" id="myImage2" name="myImage2" onload='if (this.width>150 || this.height>150) if (this.width/this.height>150/150) this.width=150; else this.height=150;'/>  
+                                          <br>
+                                          <!--绘制画布-->
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>附加证明材料（可选）</td>
+                                      <td  nowrap colspan="3">
+                                          <input id="fileInput3" name="fileInput3" type="file" onchange="processFiles3(this.files)">
+                                          <br>
+                                          <img src="" id="myImage3" name="myImage3" onload='if (this.width>150 || this.height>150) if (this.width/this.height>150/150) this.width=150; else this.height=150;'/>  
+                                          <br>
+                                          <!--绘制画布-->
+                                      </td>
+                                    </tr>
+                                    <tr><td align="center" colspan="4" style="background-color:#CB1E36"><font color="#FFFFFF">其他</font></td> </tr>
+                                    <tr>
+                                      <td width="50px" nowrap>备注（可选）</td>
+                                      <td nowrap colspan="3" ><textarea class="form-control" rows="3" id="note" name="note" style="width: 80%" placeholder="请输入备注（可不填）"></textarea></td>
+                                    </tr><!---->
+                                  </table>
+                                  <input type="submit"
+                                          id = "mybtn"
+                                         value="请将信息填写完整后添加"
+                                         class="btn btn-outline-danger btn-lg btn-block"
+                                         style="margin-top:15px;width:80%"
+                                         disabled="disabled"
+                                         />
+                              </form>  
+                          </div>	
+                              <!--endprint1-->
+                            </div><!-- .card-body -->
+                        </div><!-- .card -->
+                    </div><!-- .col-md-12 -->
+                </div><!-- .row -->
+            </div> <!-- .animated -->
+        </div> <!-- .content -->
+	</div>
+    <!-- /#right-panel -->
+
+    <script src="/resources/javascript/jquery-2.1.4.min.js"></script>
+	<script src="/resources/javascript/popper.min.js"></script>
+    <script src="/resources/javascript/plugins.js"></script>
+  	<!-- 添加jquery -->
+  	<script src="/resources/javascript/jquery-1.10.2.min.js"></script>
+    <script>
+    	$("#aside").load("/resources/pages/aside.html");
+    	$("#header").load("/resources/pages/header.html");
+        function loadJS(url){
+          var Script = document.createElement('script');
+          Script.setAttribute('src', url);
+          Script.setAttribute('type', 'text/javascript');
+          document.body.appendChild(Script);
+          return Script;
+        }
+      	loadJS("/resources/javascript/main.js")
+	</script>
+
+<script type="text/javascript" >
+  
+    var formData = new FormData();
+  	// 检查每一项输入是否为空
+  	var user_name_check = document.getElementById("user_name"); 
+    var user_num_check = document.getElementById("user_num"); 
+    var user_department_check = document.getElementById("user_department"); 
+    var usr_phone_check = document.getElementById("usr_phone"); 
+    var car_number_check = document.getElementById("car_number"); 
+    var owner_check = document.getElementById("owner"); 
+  	var btn = document.getElementById("mybtn"); 
+ 
+  	function check_info(id){
+      	var check_id = document.getElementById(id);
+      	var show_warning = document.getElementById(id+"_check");
+    	if(check_id.value==""){
+          	show_warning.innerHTML = "输入不能为空";
+        	show_warning.style.display='inline';
+        }
+      	else{
+        	show_warning.innerHTML = "";
+        	show_warning.style.display='none';
+        }
+    }
+  
+  	function validate_button(){
+      // 每次用户离开输入框都检查一遍，用以激活按钮
+      if(user_name_check.value!="" && user_num_check.value!="" && user_department_check.value!="" && usr_phone_check.value!="" && car_number_check.value!="" && owner_check.value!=""){
+        btn.disabled="";
+		btn.value="确认添加";
+      }
+    }
+  
+	//载入图片	
+	function processFiles(files) {
+      var file = files[0];
+      var reader = new FileReader();
+      reader.onload = function (e) {
+			showXY(e.target.result);
+      };
+      reader.readAsDataURL(file); 
+	  formData.append("image1", (files[0]));
+      }
+      function showXY(source){
+          var img = document.getElementById("myImage");  //图片
+          img.src = source;  //为图片赋值
+      }
+
+      function processFiles2(files) {
+        var file = files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+              showXY2(e.target.result);  		  
+        };
+        reader.readAsDataURL(file);
+        formData.append("image2", (files[0]));
+      }
+      function showXY2(source){  
+          var img = document.getElementById("myImage2");  //图片
+          img.src = source;  //为图片赋值
+      }
+
+      function processFiles3(files) {
+        var file = files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+              showXY3(e.target.result);  		  
+        };
+        reader.readAsDataURL(file);
+        formData.append("image3", (files[0]));
+      }
+      function showXY3(source){  
+          var img = document.getElementById("myImage3");  //图片
+          img.src = source;  //为图片赋值
+      } 
+  	  //同时上传图片与表单内容
+  	  function send_form(){
+      
+	  //ajax请求
+	  $.ajax({
+            type: "post",
+            url:  "https://www.messj.xyz/api/addpic/save",
+            data: formData,
+            cache : false,
+            dataType: 'json',  //不能用jsonp，会报错
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            //xhrFields:{withCredentials:true},
+            async: true,    //默认是true：异步，false：同步。
+            success: function (data) {
+              	console.log("ok");
+            },
+            error: function (data) {
+              	console.log(data);
+              	console.log("没收到数据");
+            },
+        });
+      } 
+</script>
+
+
+</body></html>
