@@ -1,6 +1,3 @@
-package binary_search;
-
-
 public class SearchForARange {
   public static void main(String[] args) throws Exception {
     int[] test = {

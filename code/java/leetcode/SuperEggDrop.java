@@ -1,4 +1,3 @@
-
 public class SuperEggDrop {
     public static void main(String[] args) {
 

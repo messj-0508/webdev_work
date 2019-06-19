@@ -1,5 +1,3 @@
-package array;
-
 public class CanPlaceFlowers {
 
   public static void main(String[] args) throws Exception {

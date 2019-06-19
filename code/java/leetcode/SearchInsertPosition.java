@@ -1,6 +1,3 @@
-package binary_search;
-
-
 public class SearchInsertPosition {
   public static void main(String[] args) throws Exception {
     int[] A = {1, 3, 5, 6};

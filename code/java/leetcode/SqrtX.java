@@ -1,5 +1,3 @@
-package binary_search;
-
 public class SqrtX {
   public static void main(String[] args) throws Exception {
     System.out.println(new SqrtX().mySqrt(Integer.MAX_VALUE));
